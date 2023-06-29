@@ -77,23 +77,23 @@ LlamaTritonModel<T>::LlamaTritonModel(size_t      tensor_para_size,
         ft::FT_CHECK(false);
     }
 
-    model_name_           = reader.Get("llama", "model_name");
-    head_num_             = reader.GetInteger("llama", "head_num");
-    size_per_head_        = reader.GetInteger("llama", "size_per_head");
-    inter_size_           = reader.GetInteger("llama", "inter_size");
-    num_layer_            = reader.GetInteger("llama", "num_layer");
-    vocab_size_           = reader.GetInteger("llama", "vocab_size");
-    rotary_embedding_dim_ = reader.GetInteger("llama", "rotary_embedding");
-    layernorm_eps_        = reader.GetFloat("llama", "layernorm_eps");
-    start_id_             = reader.GetInteger("llama", "start_id");
-    end_id_               = reader.GetInteger("llama", "end_id");
+    model_name_           = reader.Get("hxGpt", "model_name");
+    head_num_             = reader.GetInteger("hxGpt", "head_num");
+    size_per_head_        = reader.GetInteger("hxGpt", "size_per_head");
+    inter_size_           = reader.GetInteger("hxGpt", "inter_size");
+    num_layer_            = reader.GetInteger("hxGpt", "num_layer");
+    vocab_size_           = reader.GetInteger("hxGpt", "vocab_size");
+    rotary_embedding_dim_ = reader.GetInteger("hxGpt", "rotary_embedding");
+    layernorm_eps_        = reader.GetFloat("hxGpt", "layernorm_eps");
+    start_id_             = reader.GetInteger("hxGpt", "start_id");
+    end_id_               = reader.GetInteger("hxGpt", "end_id");
     use_gptj_residual_    = false;
 
-    num_tasks_ = reader.GetInteger("llama", "num_tasks", 0);
+    num_tasks_ = reader.GetInteger("hxGpt", "num_tasks", 0);
 
-    prompt_learning_start_id_ = reader.GetInteger("llama", "prompt_learning_start_id", end_id_ + 1);
+    prompt_learning_start_id_ = reader.GetInteger("hxGpt", "prompt_learning_start_id", end_id_ + 1);
     prompt_learning_type_ =
-        static_cast<ft::PromptLearningType>(reader.GetInteger("llama", "prompt_learning_type", 0));
+        static_cast<ft::PromptLearningType>(reader.GetInteger("hxGpt", "prompt_learning_type", 0));
 
     for (int task_name_id = 0; task_name_id < num_tasks_; task_name_id++) {
         std::string config_task_name = "task_" + std::to_string(task_name_id);
