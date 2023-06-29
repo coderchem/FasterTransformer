@@ -235,7 +235,7 @@ void LlamaWeight<T>::mallocWeights()
 template<typename T>
 void LlamaWeight<T>::loadModel(std::string dir_path)
 {
-    FtCudaDataType model_file_type = getModelFileType(dir_path + "/config.ini", "llama");
+    FtCudaDataType model_file_type = getModelFileType(dir_path + "/config.ini", "hxGpt");
     FT_CHECK(is_maintain_buffer == true);
 
     loadWeightFromBin<T>(
